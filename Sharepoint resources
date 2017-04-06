@@ -1,0 +1,168 @@
+
+
+https://technet.microsoft.com/library/jj937861.aspx
+
+ 
+
+-----Original Message-----
+
+From: Console, Alexander H CTR 
+
+Sent: Thursday, April 06, 2017 7:40 AM
+
+To: Console, Alexander H CTR
+
+Subject: RE: learning sharepoint
+
+ 
+
+http://sharepoint.stackexchange.com/questions/52937/learn-sharepoint
+
+ 
+
+-----Original Message-----
+
+From: Console, Alexander H CTR 
+
+Sent: Wednesday, April 05, 2017 3:24 PM
+
+To: Console, Alexander H CTR
+
+Subject: RE: working with bookmarks in word
+
+ 
+
+http://wordmvp.com/FAQs/MacrosVBA/InsertingTextAtBookmark.htm
+
+ 
+
+-----Original Message-----
+
+From: Console, Alexander H CTR 
+
+Sent: Tuesday, April 04, 2017 8:13 AM
+
+To: Console, Alexander H CTR
+
+Subject: RE: vba macro get list from sharepoint
+
+ 
+
+http://depressedpress.com/2014/04/05/accessing-sharepoint-lists-with-visual-basic-for-applications/
+
+ 
+
+-----Original Message-----
+
+From: Console, Alexander H CTR 
+
+Sent: Tuesday, April 04, 2017 7:35 AM
+
+To: Console, Alexander H CTR
+
+Subject: RE: auto word doc creation 
+
+ 
+
+http://sharepoint.stackexchange.com/questions/119901/create-a-word-document-in-a-document-library-programmatically
+
+ 
+
+-----Original Message-----
+
+From: Console, Alexander H CTR 
+
+Sent: Monday, April 03, 2017 3:32 PM
+
+To: Console, Alexander H CTR
+
+Subject: RE: auto word doc creation 
+
+ 
+
+http://www.netwoven.com/2015/04/how-to-dynamically-create-and-populate-word-document-in-a-document-library-from-custom-list/
+
+ 
+
+This is very possible using the following:
+
+•A Document Content Type holding all the fields you want
+to have appear in your document -"Observation_Summary_Report"
+
+-Submitter name
+
+-Report name
+
+-Date
+
+-suggestions/recommendations
+
+•A Template library that holds your document template and
+is using the above content type -Observation_Summary_Report •A second document
+library that will have the above content type and has the template document
+above as its document template (advanced settings under Document Library
+Settings - Content Type Name) •A custom list that has the same fields as those
+used in your content type.
+
+•A SharePoint Designer workflow that will run on the
+creation of an item in your custom list above.
+
+ 
+
+Once you upload your template to the template library,
+open the template from SharePoint and in Word (assuming 2013 but could be 2010
+also) and go to Insert -> QuickParts -> Document Property. You should see
+the other content type fields appear here. Add them to the document and save it
+back to SharePoint when ready.
+
+ 
+
+In the second document library add the same content type
+and make sure that it's template refers to the template document you uploaded
+above.
+
+ 
+
+In SharePoint designer, create a workflow that will run
+against the custom list you will create. The workflow only needs to do one
+thing, create a new item in the secondary library above. 
+
+ 
+
+In the workflow action, make sure you specify the correct
+content type, and you map the fields from your custom list to the related
+content type fields. Ensure the workflow will run on the creation of an item.
+
+ 
+
+Then whenever a user adds an item to your custom list,
+the workflow will fire and create a new document in your secondary document
+library. It will also copy the custom item values that the user entered to the
+secondary document library. 
+
+ 
+
+When a user opens the new document it will pull those
+values in as per your template.
+
+ 
+
+I hope this helps, I know it is a bit convoluted but I
+wanted to show you how you can do this more or less out of the box.
+
+ 
+
+-----Original Message-----
+
+From: Console, Alexander H CTR
+
+Sent: Friday, March 31, 2017 11:32 AM
+
+To: Console, Alexander H CTR
+
+Subject: auto word doc creation 
+
+ 
+
+http://sharepoint.stackexchange.com/questions/62610/filling-in-the-predefined-word-document-template-from-sharepoint-site
+
