@@ -1,3 +1,7 @@
+
+Resource Site for infopath
+http://www.infopathdev.com/
+
 One solution:  Have workflow create a hidden list when an infopath document is added.   Then use that list in the method we already have.
 http://stackoverflow.com/questions/16044085/updating-a-sharepoint-list-from-an-infopath-for
 
